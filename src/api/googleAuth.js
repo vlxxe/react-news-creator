@@ -1,51 +1,38 @@
-import { useDispatch } from "react-redux"
-import {
-  googleProfileSignIn,
-  googleProfileSignOut
-} from "../store/actions/googleAuthActions"
-
 export default class GoogleAuth {
-  dispatch = useDispatch()
-
-  init = () => {
+  init() {
     window.gapi.load("auth2", function() {
       window.gapi.auth2
         .init({
           client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID
         })
         .then(
-          () => console.log("init ok"),
-          e => console.log("init error", e)
+          () => {},
+          error => console.log("init error", error)
         )
     })
   }
 
-  signIn = () => {
-    const GoogleAuth = window.gapi.auth2.getAuthInstance()
+  async signIn() {
+    const googleAuth = await window.gapi.auth2
 
-    const authOk = googleUser => {
-      const data = googleUser.getBasicProfile()
-      const profile = {
-        id: data.getId(),
-        name: data.getName(),
-        img: data.getImageUrl()
-      }
-      this.dispatch(googleProfileSignIn(profile))
-    }
-    const authErr = () => console.log("auth error")
-
-    GoogleAuth.signIn({
-      scope: "profile email"
-    }).then(authOk, authErr)
+    const profile = await googleAuth.getAuthInstance().then(GoogleAuth =>
+      GoogleAuth.signIn()
+        .then(async googleUser => {
+          const data = await googleUser.getBasicProfile()
+          const dataObj = {
+            id: data.getId(),
+            name: data.getName(),
+            img: data.getImageUrl()
+          }
+          return dataObj
+        })
+        .catch(e => e)
+    )
+    return profile
   }
 
-  signOut = () => {
-    const GoogleAuth = window.gapi.auth2.getAuthInstance()
-    const singOutOk = () => {
-      this.dispatch(googleProfileSignOut())
-    }
-    const singOutErr = () => console.log("sign out error")
-
-    GoogleAuth.signOut().then(singOutOk, singOutErr)
+  async signOut() {
+    const googleAuth = window.gapi.auth2.getAuthInstance()
+    googleAuth.signOut().catch(error => error)
   }
 }

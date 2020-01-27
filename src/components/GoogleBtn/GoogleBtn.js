@@ -1,23 +1,29 @@
 import React, { useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 
 import GoogleAuth from "../../api/googleAuth"
 import styles from "./GoogleBtn.module.css"
+import {
+  googleSignOut,
+  googleRequestSignIn
+} from "../../store/actions/googleAuthActions"
 
 export const GoogleBtn = () => {
-  const googleAuth = new GoogleAuth()
+  const googleApi = new GoogleAuth()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    setTimeout(() => googleAuth.init(), 0)
-  }, [googleAuth])
+    setTimeout(() => googleApi.init(), 0)
+  }, [googleApi])
 
   const profile = useSelector(state => state.googleAuth.profile)
+  const isLoading = useSelector(state => state.googleAuth.isLoading)
 
   const googleAuthSignHandler = () => {
     if (profile.name) {
-      googleAuth.signOut()
+      dispatch(googleSignOut())
     } else {
-      googleAuth.signIn()
+      dispatch(googleRequestSignIn())
     }
   }
 
@@ -26,8 +32,10 @@ export const GoogleBtn = () => {
       {profile.img && (
         <img className={styles.img} src={profile.img} alt="profileImg" />
       )}
-      {profile.name && <p className={styles.text}>{profile.name}!</p>}
+      {profile.name && <p className={styles.text}>Hello {profile.name}!</p>}
+      {isLoading && <div uk-spinner=""></div>}
       <button
+        disabled={isLoading}
         type="button"
         onClick={googleAuthSignHandler}
         className={styles.googleBtn}

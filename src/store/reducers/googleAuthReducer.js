@@ -1,6 +1,7 @@
 import {
-  GOOGLE_PROFILE_SIGN_IN,
-  GOOGLE_PROFILE_SIGN_OUT
+  GOOGLE_REQUEST_SIGN_IN,
+  GOOGLE_SIGN_IN_SUCCESS,
+  GOOGLE_SIGN_OUT
 } from "../actions/googleAuthActions"
 
 const initialState = {
@@ -8,25 +9,34 @@ const initialState = {
     id: null,
     name: null,
     img: null
-  }
+  },
+  isLoading: false
 }
 
 export const googleAuthReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GOOGLE_PROFILE_SIGN_IN:
+    case GOOGLE_REQUEST_SIGN_IN:
       return {
         ...state,
-        profile: { ...action.payload }
+        isLoading: true
       }
 
-    case GOOGLE_PROFILE_SIGN_OUT:
+    case GOOGLE_SIGN_IN_SUCCESS:
+      return {
+        ...state,
+        profile: { ...action.payload },
+        isLoading: false
+      }
+
+    case GOOGLE_SIGN_OUT:
       return {
         ...state,
         profile: {
           id: null,
           name: null,
           img: null
-        }
+        },
+        isLoading: false
       }
 
     default:
