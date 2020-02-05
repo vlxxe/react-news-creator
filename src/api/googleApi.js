@@ -1,5 +1,5 @@
-export default class GoogleAuth {
-  init() {
+export class GoogleApi {
+  static init() {
     window.gapi.load("auth2", function() {
       window.gapi.auth2
         .init({
@@ -12,7 +12,7 @@ export default class GoogleAuth {
     })
   }
 
-  async signIn() {
+  static async signIn() {
     const googleAuth = await window.gapi.auth2
 
     const profile = await googleAuth.getAuthInstance().then(GoogleAuth =>
@@ -31,7 +31,7 @@ export default class GoogleAuth {
     return profile
   }
 
-  async signOut() {
+  static async signOut() {
     const googleAuth = window.gapi.auth2.getAuthInstance()
     googleAuth.signOut().catch(error => error)
   }

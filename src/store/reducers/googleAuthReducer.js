@@ -10,7 +10,8 @@ const initialState = {
     name: null,
     img: null
   },
-  isLoading: false
+  isLoading: false,
+  isLoggedIn: false
 }
 
 export const googleAuthReducer = (state = initialState, action) => {
@@ -25,7 +26,8 @@ export const googleAuthReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: { ...action.payload },
-        isLoading: false
+        isLoading: false,
+        isLoggedIn: true
       }
 
     case GOOGLE_SIGN_OUT:
@@ -36,7 +38,8 @@ export const googleAuthReducer = (state = initialState, action) => {
           name: null,
           img: null
         },
-        isLoading: false
+        isLoading: false,
+        isLoggedIn: false
       }
 
     default:

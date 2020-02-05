@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
-import GoogleAuth from "../../api/googleAuth"
+import { GoogleApi } from "../../api/googleApi"
 import styles from "./GoogleBtn.module.css"
 import {
   googleSignOut,
@@ -9,12 +9,11 @@ import {
 } from "../../store/actions/googleAuthActions"
 
 export const GoogleBtn = () => {
-  const googleApi = new GoogleAuth()
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setTimeout(() => googleApi.init(), 0)
-  }, [googleApi])
+    setTimeout(() => GoogleApi.init(), 1000)
+  }, [])
 
   const profile = useSelector(state => state.googleAuth.profile)
   const isLoading = useSelector(state => state.googleAuth.isLoading)

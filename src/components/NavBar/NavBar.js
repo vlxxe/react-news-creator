@@ -1,15 +1,17 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 import { GoogleBtn } from "../GoogleBtn/GoogleBtn"
-import styles from "./NavBar.module.css"
 
 export const NavBar = () => {
   return (
-    <nav className={`uk-navbar-container uk-navbar ${styles.navbar}`}>
+    <nav className="uk-navbar-container uk-navbar" style={{ height: 80 }}>
       <div className="uk-navbar-left uk-margin-small-left">
         <ul className="uk-navbar-nav">
           <li>
-            <NavLink to="/">News</NavLink>
+            <NavLink to="/">Главная</NavLink>
+          </li>
+          <li>
+            <NavLink to="/create-news">Создать новость</NavLink>
           </li>
         </ul>
       </div>

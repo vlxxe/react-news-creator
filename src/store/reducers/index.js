@@ -1,6 +1,8 @@
 import { combineReducers } from "redux"
 import { googleAuthReducer } from "./googleAuthReducer"
+import { cardsReducer } from "./cardsReducer"
 
 export const rootReducer = combineReducers({
-  googleAuth: googleAuthReducer
+  googleAuth: googleAuthReducer,
+  cards: cardsReducer
 })
