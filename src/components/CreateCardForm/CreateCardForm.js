@@ -9,7 +9,7 @@ export const CreateCardForm = () => {
   const [text, setText] = useState("")
 
   const isLoggedIn = useSelector(state => state.googleAuth.isLoggedIn)
-  const profile = useSelector(state => state.googleAuth.profile)
+  const profile = useSelector(state => state.googleAuth.userProfile)
 
   const submitHandler = async e => {
     e.preventDefault()

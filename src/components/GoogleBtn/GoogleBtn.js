@@ -15,11 +15,11 @@ export const GoogleBtn = () => {
     setTimeout(() => GoogleApi.init(), 1000)
   }, [])
 
-  const profile = useSelector(state => state.googleAuth.profile)
+  const userProfile = useSelector(state => state.googleAuth.userProfile)
   const isLoading = useSelector(state => state.googleAuth.isLoading)
 
   const googleAuthSignHandler = () => {
-    if (profile.name) {
+    if (userProfile.name) {
       dispatch(googleSignOut())
     } else {
       dispatch(googleRequestSignIn())
@@ -28,10 +28,12 @@ export const GoogleBtn = () => {
 
   return (
     <div className={styles.container}>
-      {profile.img && (
-        <img className={styles.img} src={profile.img} alt="profileImg" />
+      {userProfile.img && (
+        <img className={styles.img} src={userProfile.img} alt="profileImg" />
       )}
-      {profile.name && <p className={styles.text}>Hello {profile.name}!</p>}
+      {userProfile.name && (
+        <p className={styles.text}>Hello {userProfile.name}!</p>
+      )}
       {isLoading && <div uk-spinner=""></div>}
       <button
         disabled={isLoading}
@@ -63,7 +65,7 @@ export const GoogleBtn = () => {
           </svg>
         </span>
         <span className={styles.googleBtnText}>
-          {!profile.name ? "Sign in with Google" : "Sign out"}
+          {!userProfile.name ? "Sign in with Google" : "Sign out"}
         </span>
       </button>
     </div>

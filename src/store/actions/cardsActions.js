@@ -1,8 +1,14 @@
 import { Http } from "../../api/http"
 
 export const ADD_CARD = "ADD_CARD"
+
 export const LOAD_CARDS = "LOAD_CARDS"
 export const LOADED_CARDS = "LOADED_CARDS"
+
+export const CARD_CONTENT_LOAD = "CARD_CONTENT_LOAD"
+export const CARD_CONTENT_LOADED = "CARD_CONTENT_LOADED"
+
+export const CARD_DELETE = "CARD_DELETE"
 
 const addCard = data => {
   return {
@@ -51,5 +57,48 @@ export const fetchCards = () => {
 
     dispatch(loadedCards(cards))
     console.log(cards)
+  }
+}
+
+const cardContentLoad = () => {
+  return {
+    type: CARD_CONTENT_LOAD
+  }
+}
+
+const cardContentLoaded = data => {
+  return {
+    type: CARD_CONTENT_LOADED,
+    payload: data
+  }
+}
+
+export const fetchCardContent = id => {
+  return async dispatch => {
+    dispatch(cardContentLoad())
+
+    const response = await Http.get(
+      `https://note-maker-28d08.firebaseio.com/cards/${id}.json`
+    )
+
+    dispatch(cardContentLoaded(response))
+  }
+}
+
+const cardDelete = () => {
+  return {
+    type: CARD_DELETE
+  }
+}
+
+export const fetchCardDelete = id => {
+  return async dispatch => {
+    console.log("gre")
+    console.log(id)
+    await Http.delete(
+      `https://note-maker-28d08.firebaseio.com/cards/${id}.json`
+    )
+
+    dispatch(cardDelete())
   }
 }

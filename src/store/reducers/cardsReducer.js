@@ -1,7 +1,15 @@
-import { ADD_CARD, LOADED_CARDS, LOAD_CARDS } from "../actions/cardsActions"
+import {
+  ADD_CARD,
+  LOADED_CARDS,
+  LOAD_CARDS,
+  CARD_CONTENT_LOADED,
+  CARD_CONTENT_LOAD,
+  CARD_DELETE
+} from "../actions/cardsActions"
 
 const initialState = {
   cardsList: [],
+  cardContent: null,
   isLoading: false
 }
 
@@ -21,6 +29,23 @@ export const cardsReducer = (state = initialState, action) => {
       }
 
     case ADD_CARD:
+      return {
+        ...state
+      }
+
+    case CARD_CONTENT_LOAD:
+      return {
+        ...state,
+        cardContent: null
+      }
+
+    case CARD_CONTENT_LOADED:
+      return {
+        ...state,
+        cardContent: action.payload
+      }
+
+    case CARD_DELETE:
       return {
         ...state
       }

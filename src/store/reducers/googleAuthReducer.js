@@ -5,7 +5,7 @@ import {
 } from "../actions/googleAuthActions"
 
 const initialState = {
-  profile: {
+  userProfile: {
     id: null,
     name: null,
     img: null
@@ -25,7 +25,7 @@ export const googleAuthReducer = (state = initialState, action) => {
     case GOOGLE_SIGN_IN_SUCCESS:
       return {
         ...state,
-        profile: { ...action.payload },
+        userProfile: { ...action.payload },
         isLoading: false,
         isLoggedIn: true
       }
@@ -33,7 +33,7 @@ export const googleAuthReducer = (state = initialState, action) => {
     case GOOGLE_SIGN_OUT:
       return {
         ...state,
-        profile: {
+        userProfile: {
           id: null,
           name: null,
           img: null

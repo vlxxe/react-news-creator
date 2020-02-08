@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchCards } from "../../store/actions/cardsActions"
-import { CardItem } from "../CardItem/CardItem"
+import { CardItem } from "./CardItem"
 
 export const CardList = () => {
   const dispatch = useDispatch()

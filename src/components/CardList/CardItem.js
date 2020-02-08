@@ -1,10 +1,12 @@
 import React from "react"
+import { NavLink } from "react-router-dom"
+import { EditCard } from "../EditCard/EditCard"
 
 export const CardItem = ({ card }) => {
   return (
     <div
       className="uk-card uk-card-default"
-      style={{ display: "block", width: 580, marginBottom: 15 }}
+      style={{ width: 580, marginBottom: 15 }}
       key={card.id}
     >
       <div className="uk-card-header">
@@ -20,7 +22,12 @@ export const CardItem = ({ card }) => {
           </div>
           <div className="uk-width-expand">
             <h3 className="uk-card-title uk-margin-remove-bottom">
-              {card.title}
+              <NavLink to={`/card/${card.id}`}>{card.title}</NavLink>
+              <EditCard
+                cardAuthorId={card.profile.id}
+                cardTitle={card.title}
+                cardId={card.id}
+              />
             </h3>
             <div className="uk-flex uk-flex-between">
               <p className="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom">
@@ -32,7 +39,7 @@ export const CardItem = ({ card }) => {
         </div>
       </div>
       <div className="uk-card-body">
-        <p>{card.text}</p>
+        <p>{card.text.substring(0, 200)}...</p>
       </div>
     </div>
   )
