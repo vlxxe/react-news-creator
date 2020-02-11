@@ -7,7 +7,6 @@ export const CardItem = ({ card }) => {
     <div
       className="uk-card uk-card-default"
       style={{ width: 580, marginBottom: 15 }}
-      key={card.id}
     >
       <div className="uk-card-header">
         <div className="uk-grid-small uk-flex-middle" uk-grid="">
