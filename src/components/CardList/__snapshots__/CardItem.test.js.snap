@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardItem /> render correct should match the snapshot 1`] = `
+<div
+  className="uk-card uk-card-default"
+  style={
+    Object {
+      "marginBottom": 15,
+      "width": 580,
+    }
+  }
+>
+  <div
+    className="uk-card-header"
+  >
+    <div
+      className="uk-grid-small uk-flex-middle"
+      uk-grid=""
+    >
+      <div
+        className="uk-width-auto"
+      >
+        <img
+          alt="user-pic"
+          className="uk-border-circle"
+          height="40"
+          src="http"
+          width="40"
+        />
+      </div>
+      <div
+        className="uk-width-expand"
+      >
+        <h3
+          className="uk-card-title uk-margin-remove-bottom"
+        >
+          <a
+            aria-current={null}
+            href="/card/undefined"
+            onClick={[Function]}
+          />
+          <div
+            style={
+              Object {
+                "position": "absolute",
+                "right": 15,
+                "top": 5,
+              }
+            }
+          >
+            <span
+              className="uk-icon-link"
+              style={
+                Object {
+                  "cursor": "pointer",
+                  "marginRight": 5,
+                }
+              }
+              uk-icon="pencil"
+            />
+            <span
+              className="uk-icon-link"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+              uk-icon="trash"
+            />
+          </div>
+        </h3>
+        <div
+          className="uk-flex uk-flex-between"
+        >
+          <p
+            className="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"
+          />
+          <span
+            className="uk-text-meta"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="uk-card-body"
+  >
+    <p>
+      text
+      ...
+    </p>
+  </div>
+</div>
+`;

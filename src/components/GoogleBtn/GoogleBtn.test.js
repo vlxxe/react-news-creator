@@ -1,9 +1,22 @@
-import React from "react"
-import renderer from "react-test-renderer"
-import GoogleBtn from "./GoogleBtn"
+/* import React from "react"
+import { shallow } from "enzyme"
+import { Provider } from "react-redux"
+import configureMockStore from "redux-mock-store"
 
-it(`GoogleBtn correctly renders after relaunch`, () => {
-  const tree = renderer.create(<GoogleBtn></GoogleBtn>).toJSON()
+import { GoogleBtn } from "./GoogleBtn"
 
-  expect(tree).toMatchSnapshot()
+const mockStore = configureMockStore()
+const store = mockStore({})
+
+describe("Testpage Component", () => {
+  it("should render without throwing an error", () => {
+    expect(
+      shallow(
+        <Provider store={store}>
+          <GoogleBtn />
+        </Provider>
+      )
+    ).toBe(true)
+  })
 })
+ */
