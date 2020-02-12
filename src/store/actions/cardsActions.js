@@ -85,20 +85,19 @@ export const fetchCardContent = id => {
   }
 }
 
-const cardDelete = () => {
+const cardDelete = id => {
   return {
-    type: CARD_DELETE
+    type: CARD_DELETE,
+    payload: id
   }
 }
 
 export const fetchCardDelete = id => {
   return async dispatch => {
-    console.log("gre")
-    console.log(id)
     await Http.delete(
       `https://note-maker-28d08.firebaseio.com/cards/${id}.json`
     )
 
-    dispatch(cardDelete())
+    dispatch(cardDelete(id))
   }
 }

@@ -22,11 +22,7 @@ export const CardItem = ({ card }) => {
           <div className="uk-width-expand">
             <h3 className="uk-card-title uk-margin-remove-bottom">
               <NavLink to={`/card/${card.id}`}>{card.title}</NavLink>
-              <EditCard
-                cardAuthorId={card.profile.id}
-                cardTitle={card.title}
-                cardId={card.id}
-              />
+              <EditCard cardAuthorId={card.profile.id} cardId={card.id} />
             </h3>
             <div className="uk-flex uk-flex-between">
               <p className="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom">
