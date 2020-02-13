@@ -4,7 +4,8 @@ import {
   LOAD_CARDS,
   CARD_CONTENT_LOADED,
   CARD_CONTENT_LOAD,
-  CARD_DELETE
+  CARD_DELETE,
+  CARD_EDIT_TEXT
 } from "../actions/cardsActions"
 
 const initialState = {
@@ -50,6 +51,17 @@ export const cardsReducer = (state = initialState, action) => {
       return {
         ...state,
         cardsList: [...arr]
+      }
+
+    case CARD_EDIT_TEXT:
+      return {
+        ...state,
+        cardsList: state.cardsList.map(i => {
+          if (i.id === action.payload.id) {
+            return action.payload
+          }
+          return i
+        })
       }
 
     default:

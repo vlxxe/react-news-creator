@@ -9,6 +9,7 @@ export const CARD_CONTENT_LOAD = "CARD_CONTENT_LOAD"
 export const CARD_CONTENT_LOADED = "CARD_CONTENT_LOADED"
 
 export const CARD_DELETE = "CARD_DELETE"
+export const CARD_EDIT_TEXT = "CARD_EDIT_TEXT"
 
 const addCard = data => {
   return {
@@ -56,7 +57,6 @@ export const fetchCards = () => {
     }
 
     dispatch(loadedCards(cards))
-    console.log(cards)
   }
 }
 
@@ -99,5 +99,23 @@ export const fetchCardDelete = id => {
     )
 
     dispatch(cardDelete(id))
+  }
+}
+
+const cardEditText = card => {
+  return {
+    type: CARD_EDIT_TEXT,
+    payload: card
+  }
+}
+
+export const fetchCardEditText = (id, card) => {
+  return async dispatch => {
+    await Http.patch(
+      `https://note-maker-28d08.firebaseio.com/cards/${id}.json`,
+      card
+    )
+
+    dispatch(cardEditText(card))
   }
 }

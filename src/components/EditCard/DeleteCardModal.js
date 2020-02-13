@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import { useHistory } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 
 import { fetchCardDelete } from "../../store/actions/cardsActions"
 
@@ -17,9 +17,9 @@ export const DeleteCardModal = ({ setShowModal, card }) => {
   return (
     <div className="uk-modal uk-open" uk-modal="" style={{ display: "block" }}>
       <div className="uk-modal-dialog uk-modal-body">
-        <h2 className="uk-modal-title">Удаление записи</h2>
+        <h2 className="uk-modal-title">Удалить запись</h2>
         <p>
-          Вы точно хотите удалить запись <b>{card.title}</b>?
+          Вы точно хотите удалить запись <b>{card.title}</b> ?
         </p>
         <p className="uk-text-right">
           <button
