@@ -34,7 +34,7 @@ export const CreateCardForm = () => {
   const changeHandler = e => {
     const placeholder = e.target.placeholder
     const value = e.target.value
-    if (placeholder === "Заголовок новости") {
+    if (placeholder === "Заголовок записи") {
       setTitle(() => value)
     } else {
       setText(() => value)
@@ -42,14 +42,14 @@ export const CreateCardForm = () => {
   }
 
   if (!isLoggedIn) {
-    return <h2>Необходимо авторизоваться для создания новости!</h2>
+    return <h2>Необходимо авторизоваться, чтобы создать запись!</h2>
   }
 
   return (
     <div>
       <form style={{ maxWidth: 700 }} onSubmit={submitHandler}>
         <fieldset className="uk-fieldset">
-          <legend className="uk-legend">Форма создания новости</legend>
+          <legend className="uk-legend">Форма создания записи</legend>
 
           <div className="uk-margin">
             <input
@@ -57,7 +57,7 @@ export const CreateCardForm = () => {
               onChange={changeHandler}
               className="uk-input"
               type="text"
-              placeholder="Заголовок новости"
+              placeholder="Заголовок записи"
             />
           </div>
 
@@ -68,11 +68,11 @@ export const CreateCardForm = () => {
               style={{ resize: "none" }}
               className="uk-textarea"
               rows="5"
-              placeholder="Текст новости"
+              placeholder="Текст записи"
             ></textarea>
           </div>
           <button className="uk-button uk-button-primary" type="submit">
-            Создать новость
+            Создать запись
           </button>
         </fieldset>
       </form>

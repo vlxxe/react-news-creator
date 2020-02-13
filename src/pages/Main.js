@@ -5,7 +5,7 @@ import { CardList } from "../components/CardList/CardList"
 export const Main = () => {
   return (
     <>
-      <h2>Список новостей</h2>
+      <h2>Список записей</h2>
       <CardList />
     </>
   )

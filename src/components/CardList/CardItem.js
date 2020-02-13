@@ -34,7 +34,11 @@ export const CardItem = ({ card }) => {
         </div>
       </div>
       <div className="uk-card-body">
-        <p>{card.text.substring(0, 200)}...</p>
+        <p>
+          {card.text.length > 200
+            ? card.text.substring(0, 200) + "..."
+            : card.text}
+        </p>
       </div>
     </div>
   )
