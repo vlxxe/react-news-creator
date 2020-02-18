@@ -1,6 +1,6 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
-import { EditCard } from "../EditCard/EditCard"
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { EditCard } from "../EditCard/EditCard";
 
 export const CardItem = ({ card }) => {
   return (
@@ -41,5 +41,5 @@ export const CardItem = ({ card }) => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};

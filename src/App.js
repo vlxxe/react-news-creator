@@ -1,11 +1,11 @@
-import React from "react"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { NavBar } from "./components/NavBar/NavBar"
-import { Main } from "./pages/Main"
-import { Login } from "./pages/Login"
-import { CreateCardForm } from "./components/CreateCardForm/CreateCardForm"
-import { CardContent } from "./components/CardContent/CardContent"
+import { NavBar } from "./components/NavBar/NavBar";
+import { Main } from "./pages/Main";
+import { Login } from "./pages/Login";
+import { CreateCard } from "./pages/CreateCard";
+import { CardContent } from "./components/CardContent/CardContent";
 
 function App() {
   return (
@@ -19,18 +19,18 @@ function App() {
           <Route
             path="/card/:id"
             render={({ match }) => {
-              const { id } = match.params
-              return <CardContent cardId={id} />
+              const { id } = match.params;
+              return <CardContent cardId={id} />;
             }}
           />
 
-          <Route component={CreateCardForm} path="/create-news" exact />
+          <Route component={CreateCard} path="/create-card" exact />
 
           <Route component={Login} path="/login" exact />
         </Switch>
       </div>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

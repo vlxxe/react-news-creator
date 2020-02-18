@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardContent render correctly 1`] = `
+<div>
+  <h2>
+    Загрузка 
+    <div
+      uk-spinner=""
+    />
+  </h2>
+</div>
+`;

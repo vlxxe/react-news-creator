@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NavBar /> render correct should match the snapshot 1`] = `
+exports[`NavBar should match the snapshot 1`] = `
 <nav
   className="uk-navbar-container uk-navbar"
   style={
@@ -47,18 +47,6 @@ exports[`<NavBar /> render correct should match the snapshot 1`] = `
         <div
           className="container"
         >
-          <img
-            alt="profileImg"
-            className="img"
-            src="http"
-          />
-          <p
-            className="text"
-          >
-            Hello 
-            test
-            !
-          </p>
           <button
             className="googleBtn"
             onClick={[Function]}
@@ -95,7 +83,7 @@ exports[`<NavBar /> render correct should match the snapshot 1`] = `
             <span
               className="googleBtnText"
             >
-              Sign out
+              Sign in with Google
             </span>
           </button>
         </div>

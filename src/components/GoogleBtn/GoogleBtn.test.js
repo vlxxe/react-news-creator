@@ -1,22 +1,24 @@
-/* import React from "react"
-import { shallow } from "enzyme"
-import { Provider } from "react-redux"
-import configureMockStore from "redux-mock-store"
+import React from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+import renderer from "react-test-renderer";
 
-import { GoogleBtn } from "./GoogleBtn"
+import { GoogleBtn } from "./GoogleBtn";
+import { emptyStore } from "../../mocks/store";
 
-const mockStore = configureMockStore()
-const store = mockStore({})
-
-describe("Testpage Component", () => {
-  it("should render without throwing an error", () => {
-    expect(
-      shallow(
-        <Provider store={store}>
+describe("GoogleBtn", () => {
+  let component;
+  beforeEach(() => {
+    component = renderer.create(
+      <Provider store={emptyStore}>
+        <Router>
           <GoogleBtn />
-        </Provider>
-      )
-    ).toBe(true)
-  })
-})
- */
+        </Router>
+      </Provider>
+    );
+  });
+
+  it("should match the snapshot", () => {
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+});

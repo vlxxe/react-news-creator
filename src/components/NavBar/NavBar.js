@@ -1,6 +1,6 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
-import { GoogleBtn } from "../GoogleBtn/GoogleBtn"
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { GoogleBtn } from "../GoogleBtn/GoogleBtn";
 
 export const NavBar = () => {
   return (
@@ -11,7 +11,7 @@ export const NavBar = () => {
             <NavLink to="/">Главная</NavLink>
           </li>
           <li>
-            <NavLink to="/create-news">Создать запись</NavLink>
+            <NavLink to="/create-card">Создать запись</NavLink>
           </li>
         </ul>
       </div>
@@ -24,5 +24,5 @@ export const NavBar = () => {
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};

@@ -1,36 +1,24 @@
-import React from "react"
-import { Provider } from "react-redux"
-import renderer from "react-test-renderer"
-import configureStore from "redux-mock-store"
-import { BrowserRouter as Router } from "react-router-dom"
+import React from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+import renderer from "react-test-renderer";
 
-import { NavBar } from "./NavBar"
+import { NavBar } from "./NavBar";
+import { emptyStore } from "../../mocks/store";
 
-const mockStore = configureStore([])
-
-describe("<NavBar /> render correct", () => {
-  let store
-  let component
+describe("NavBar", () => {
+  let component;
   beforeEach(() => {
-    store = mockStore({
-      googleAuth: {
-        userProfile: {
-          id: 1,
-          name: "test",
-          img: "http"
-        }
-      }
-    })
     component = renderer.create(
-      <Provider store={store}>
+      <Provider store={emptyStore}>
         <Router>
           <NavBar />
         </Router>
       </Provider>
-    )
-  })
+    );
+  });
 
   it("should match the snapshot", () => {
-    expect(component.toJSON()).toMatchSnapshot()
-  })
-})
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+});
