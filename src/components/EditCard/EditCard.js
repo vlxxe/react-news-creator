@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 import { DeleteCardModal } from "./DeleteCardModal"
 import { EditTextModal } from "./EditTextModal"
@@ -8,9 +7,6 @@ import { EditTextModal } from "./EditTextModal"
 export const EditCard = ({ cardAuthorId, cardId }) => {
   const [showDeleteCardModal, setDeleteCardModal] = useState(false)
   const [showEditTextModal, setEditTextModal] = useState(false)
-
-  let history = useHistory()
-  const dispatch = useDispatch()
 
   const currentUserId = useSelector(state => state.googleAuth.userProfile.id)
   const selectedCard = useSelector(state =>

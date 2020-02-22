@@ -1,30 +1,30 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 
-import { GoogleApi } from "../../api/googleApi";
-import styles from "./GoogleBtn.module.css";
+import { GoogleApi } from "../../api/googleApi"
+import styles from "./GoogleBtn.module.css"
 import {
   googleSignOut,
   googleRequestSignIn
-} from "../../store/actions/googleAuthActions";
+} from "../../store/actions/googleAuthActions"
 
 export const GoogleBtn = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  /* useEffect(() => {
+  useEffect(() => {
     setTimeout(() => GoogleApi.init(), 1000)
-  }, []) */
+  }, [])
 
-  const userProfile = useSelector(state => state.googleAuth.userProfile);
-  const isLoading = useSelector(state => state.googleAuth.isLoading);
+  const userProfile = useSelector(state => state.googleAuth.userProfile)
+  const isLoading = useSelector(state => state.googleAuth.isLoading)
 
   const googleAuthSignHandler = () => {
     if (userProfile.name) {
-      dispatch(googleSignOut());
+      dispatch(googleSignOut())
     } else {
-      dispatch(googleRequestSignIn());
+      dispatch(googleRequestSignIn())
     }
-  };
+  }
 
   return (
     <div className={styles.container}>
@@ -69,5 +69,5 @@ export const GoogleBtn = () => {
         </span>
       </button>
     </div>
-  );
-};
+  )
+}

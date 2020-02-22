@@ -1,47 +1,47 @@
-import React from "react";
-import { reset } from "redux-form";
-import { Field, reduxForm } from "redux-form";
-import { useDispatch } from "react-redux";
-import { fetchAddCard } from "../../store/actions/cardsActions";
+import React from "react"
+import { reset } from "redux-form"
+import { Field, reduxForm } from "redux-form"
+import { useDispatch } from "react-redux"
+import { fetchAddCard } from "../../store/actions/cardsActions"
 import {
   required,
-  maxLength50,
+  maxLength40,
   maxLength300,
   minLength10
-} from "../../utils/validators";
-import { Input, Textarea } from "../CustomsForm/CustomForms";
+} from "../../utils/validators"
+import { Input, Textarea } from "../CustomsForm/CustomForms"
 
-export const CreateCardForm = profile => {
-  const dispatch = useDispatch();
+export const CreateCardForm = ({ userProfile }) => {
+  const dispatch = useDispatch()
 
   const onSubmit = async data => {
-    const d = new Date();
-    const day = d.getDate();
-    const month = d.getMonth() + 1;
-    const year = d.getFullYear();
+    const d = new Date()
+    const day = d.getDate()
+    const month = d.getMonth() + 1
+    const year = d.getFullYear()
 
     const card = {
       date: `${day}/${month}/${year}`,
       title: data.title,
       text: data.text,
-      profile
-    };
+      profile: userProfile
+    }
 
-    dispatch(fetchAddCard(card));
-    dispatch(reset("createCard"));
+    dispatch(fetchAddCard(card))
+    dispatch(reset("createCard"))
 
     window.UIkit.notification({
       message: "<span uk-icon='icon: check'></span> Запись создана",
       status: "success",
       pos: "bottom-right"
-    });
-  };
+    })
+  }
 
-  return <CreateCardReduxForm onSubmit={onSubmit} />;
-};
+  return <CreateCardReduxForm onSubmit={onSubmit} />
+}
 
 let CreateCardReduxForm = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit } = props
 
   return (
     <form style={{ maxWidth: 700 }} onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ let CreateCardReduxForm = props => {
             component={Input}
             type="text"
             placeholder="Заголовок записи"
-            validate={[required, maxLength50, minLength10]}
+            validate={[required, maxLength40, minLength10]}
           />
         </div>
 
@@ -75,9 +75,9 @@ let CreateCardReduxForm = props => {
         </button>
       </fieldset>
     </form>
-  );
-};
+  )
+}
 
 CreateCardReduxForm = reduxForm({
   form: "createCard"
-})(CreateCardReduxForm);
+})(CreateCardReduxForm)
